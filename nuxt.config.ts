@@ -74,6 +74,7 @@ export default defineNuxtConfig({
   icon: {
     clientBundle: {
       scan: true,
+      icons: ['lucide:play', 'lucide:pause', 'lucide:layers', 'lucide:flower', 'lucide:grid-2x2', 'lucide:scissors'],
       sizeLimitKb: 512,
     },
   },

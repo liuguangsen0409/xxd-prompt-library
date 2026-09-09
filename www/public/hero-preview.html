@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hero 动效样稿 · xxd prompt library</title>
+<style>
+:root{--paper:#fcfcfa;--ink:#21221f;--muted:#858780;--line:#e4e5dd;--accent:#66866b;--soft:#f0f2ec;--white:#fff;--shadow:0 12px 35px #20282010;--duration:14s}
+*{box-sizing:border-box}body{margin:0;background:var(--paper);color:var(--ink);font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC",sans-serif;-webkit-font-smoothing:antialiased}button,a{-webkit-tap-highlight-color:transparent}button{font:inherit;cursor:pointer}button:focus-visible,a:focus-visible{outline:3px solid var(--accent);outline-offset:5px}a{color:inherit;text-decoration:none}header{height:72px;max-width:1320px;margin:auto;padding:0 38px;display:flex;align-items:center;justify-content:space-between}.brand{font-size:16px;font-weight:650;display:flex;align-items:center;gap:10px}.brand img{width:27px;height:27px}.draft{font:11px ui-monospace,monospace;letter-spacing:1.5px;color:var(--muted);display:flex;align-items:center;gap:9px}.draft:before{content:"";width:6px;height:6px;border-radius:100%;background:var(--accent)}main{max-width:1260px;margin:auto}.intro{text-align:center;padding:29px 20px 0}.eyebrow{font:10px ui-monospace,monospace;color:var(--accent);letter-spacing:3px;margin:0 0 18px}h1{font-size:clamp(32px,3.7vw,52px);font-weight:650;letter-spacing:-2px;line-height:1.2;margin:0}h1 span{color:var(--accent)}.description{font-size:14px;line-height:1.8;color:#777a73;margin:15px 0 20px}.cta{display:inline-flex;align-items:center;gap:24px;background:var(--ink);color:var(--white);padding:11px 19px;border-radius:7px;font-size:13px}.cta span{font-size:18px;line-height:16px}.stage{position:relative;margin:25px 35px 0;height:455px;display:grid;grid-template-columns:26% 30% 44%;isolation:isolate}.stage:before{content:"";position:absolute;inset:15px 0;background-image:radial-gradient(var(--line) .65px,transparent .65px);background-size:18px 18px;mask-image:linear-gradient(90deg,transparent,#000 20%,#000 80%,transparent);opacity:.55;z-index:-1}.col{position:relative;min-width:0}.step{position:absolute;top:9px;left:0;right:0;text-align:center;display:flex;align-items:center;justify-content:center;gap:9px;font-size:10px;color:var(--muted);letter-spacing:1px}.step b{font:10px ui-monospace,monospace;color:#a3a69c}.source{position:absolute;left:15%;top:101px;width:70%;max-width:211px;transform:rotate(-7deg);background:var(--white);padding:7px 7px 0;border:1px solid var(--line);border-radius:11px;box-shadow:var(--shadow);animation:source-flight var(--duration) cubic-bezier(.22,.8,.22,1) infinite;z-index:2}.art{aspect-ratio:4/3;background-image:var(--atlas,url('/hero-preview/boat-v2.png'));background-size:300% 200%;background-repeat:no-repeat;border-radius:6px;background-color:var(--soft)}.original{background-position:0 0}.relief{background-position:50% 0}.silk{background-position:100% 0}.pixel{background-position:0 100%}.cutpaper{background-position:50% 100%}.source-caption{display:flex;justify-content:space-between;align-items:center;padding:12px 3px;font-size:10px;color:var(--muted)}.source-caption b{color:var(--ink);font-weight:500}.source-ghost{position:absolute;left:9%;top:105px;width:67%;height:145px;background:var(--soft);border:1px solid var(--line);border-radius:11px;transform:rotate(-15deg);opacity:.8}.source-note{position:absolute;left:0;right:0;top:320px;text-align:center;font-size:11px;color:var(--muted)}.source-note span{color:var(--accent)}.connector{position:absolute;top:185px;height:1px;background:var(--line);z-index:0}.connector.one{left:22%;width:11%}.connector.two{left:53%;width:12%}.connector:after{content:"";position:absolute;right:0;top:-3px;width:6px;height:6px;border-top:1px solid #a8b4a7;border-right:1px solid #a8b4a7;transform:rotate(45deg)}.pulse{position:absolute;top:-1px;height:3px;width:28px;background:linear-gradient(90deg,transparent,var(--accent));animation:travel 2.4s linear infinite;opacity:.65}.deck{position:absolute;top:47px;left:6%;width:88%;height:282px;mask-image:linear-gradient(transparent,#000 23%,#000 76%,transparent)}.prompt{position:absolute;inset:0 0 auto;background:var(--white);border:1px solid var(--line);border-radius:10px;padding:17px 17px 15px;height:104px;transition:transform .8s cubic-bezier(.25,.8,.25,1),opacity .8s,border-color .8s,box-shadow .8s;transform:translateY(0);opacity:.35}.prompt.active{opacity:1;border-color:#b0c3af;box-shadow:0 8px 25px #536b5510}.prompt-top{display:flex;align-items:center;gap:8px;font-size:12px;font-weight:600}.prompt-icon{display:grid;place-items:center;width:24px;height:24px;border-radius:5px;background:var(--soft);color:var(--accent);font-size:14px}.prompt-id{margin-left:auto;font:9px ui-monospace,monospace;color:var(--muted)}.prompt p{font-size:10px;line-height:1.8;color:var(--muted);margin:9px 0 0}.cursor{display:inline-block;width:4px;height:10px;background:var(--accent);vertical-align:middle;margin-left:3px;animation:blink 1s steps(2) infinite}.engine-caption{position:absolute;top:339px;left:0;right:0;text-align:center;font:9px ui-monospace,monospace;color:var(--muted);letter-spacing:1.4px}.engine-caption span{color:var(--accent)}.outputs{position:absolute;inset:47px 0 0 25px}.result{position:absolute;width:44%;background:var(--white);padding:6px 6px 0;border-radius:10px;border:1px solid var(--line);box-shadow:var(--shadow);opacity:0;transform:translate(-45px,10px) scale(.8);transition:opacity 0s,transform .85s cubic-bezier(.16,1,.3,1),left .85s,top .85s;z-index:1}.result:nth-child(1){left:4%;top:1px;--r:-4deg}.result:nth-child(2){left:53%;top:28px;--r:5deg}.result:nth-child(3){left:4%;top:205px;--r:3deg}.result:nth-child(4){left:53%;top:225px;--r:-3deg}.result.shown{transition:opacity .65s,transform .85s cubic-bezier(.16,1,.3,1);opacity:1;transform:translate(0,0) rotate(var(--r)) scale(1)}.result.latest{z-index:3}.result footer{height:32px;padding:0 4px;display:flex;align-items:center;justify-content:space-between;font-size:10px}.result footer span{color:var(--accent);font:9px ui-monospace,monospace}.result:after{content:"";position:absolute;inset:0;border:1px solid transparent;border-radius:10px;pointer-events:none}.result.latest:after{animation:reveal-ring 1.5s ease-out}.result:hover{z-index:5;transform:translateY(-7px) rotate(0) scale(1.06)}.controls{margin:12px 40px 0;padding:20px 0;display:flex;justify-content:space-between;align-items:center;border-top:1px solid var(--line);gap:15px}.modes{display:flex;align-items:center;gap:4px;background:var(--soft);padding:4px;border-radius:7px}.modes button{font-size:11px;border:0;background:transparent;color:var(--muted);padding:8px 14px;border-radius:5px}.modes button[aria-pressed=true]{color:var(--ink);background:var(--white);box-shadow:0 1px 4px #0000000c}.transport{display:flex;align-items:center;gap:14px}.transport button{border:1px solid var(--line);border-radius:6px;background:transparent;color:var(--ink);padding:7px 12px;font-size:11px}.timeline{width:90px;height:2px;background:var(--line)}.timeline i{display:block;height:100%;width:0;background:var(--accent)}.status{width:115px;font:10px ui-monospace,monospace;color:var(--muted)}.note{text-align:center;font-size:10px;line-height:1.8;color:var(--muted);margin:1px 20px 24px}.note a{text-decoration:underline;text-underline-offset:3px}.paused *{animation-play-state:paused!important}.still .source{animation:none}.still .pulse,.still .cursor{animation:none}.still .prompt,.still .result{transition:none}.still .result:after{animation:none}.loading{position:fixed;bottom:16px;left:50%;transform:translateX(-50%);background:var(--ink);color:var(--white);padding:10px 18px;border-radius:8px;font-size:12px;z-index:10}.loading[hidden]{display:none}
+@keyframes source-flight{0%{opacity:0;transform:translateX(-160px) rotate(-18deg) scale(.85)}12%,83%{opacity:1;transform:translateX(0) rotate(-7deg) scale(1)}92%,100%{opacity:0;transform:translateX(65px) rotate(0) scale(.9)}}@keyframes travel{from{left:0;opacity:0}30%{opacity:.9}to{left:85%;opacity:0}}@keyframes blink{to{opacity:0}}@keyframes reveal-ring{0%{border-color:#87a580;box-shadow:0 0 0 4px #87a58020}100%{border-color:transparent;box-shadow:0 0 0 12px transparent}}
+@media(min-width:1450px){.intro{padding-top:55px}.stage{margin-top:40px;height:455px}}
+@media(max-width:800px){header{padding:0 20px;height:62px}.draft{font-size:9px;letter-spacing:.5px}.brand{font-size:13px}.intro{padding-top:25px}h1{letter-spacing:-1px}.stage{margin:25px 14px 0;grid-template-columns:26% 32% 42%;height:365px}.prompt{padding:12px 9px}.prompt-id{display:none}.prompt p{font-size:9px}.prompt-top{font-size:10px;gap:5px}.outputs{left:12px}.result footer{font-size:9px}.result footer span{display:none}.result:nth-child(3){top:167px}.result:nth-child(4){top:182px}.source{top:115px;width:82%;left:4%}.source-ghost{width:77%;left:1%;top:111px;height:110px}.source-caption{font-size:9px;padding:9px 2px}.source-caption span{display:none}.source-note{top:270px;font-size:9px}.engine-caption{top:303px;font-size:8px;letter-spacing:.5px}.controls{margin:5px 20px 0}.timeline{display:none}.status{width:auto}.transport{gap:8px}}
+@media(max-width:540px){.draft{font-size:8px}.intro{padding-top:26px}.eyebrow{font-size:9px;letter-spacing:2px}h1{font-size:32px}h1 span{display:block;margin-top:6px}.description{font-size:12px}.stage{display:block;height:760px;margin-top:20px}.col{position:absolute}.input-col{left:4%;top:0;width:38%;height:315px}.prompt-col{right:1%;top:0;width:55%;height:315px}.output-col{left:0;right:0;top:390px;height:360px}.source{top:115px}.source-ghost{height:108px}.source-note{top:253px}.prompt-top{font-size:12px}.prompt p{font-size:10px}.connector.one{left:36%;top:183px;width:17%}.connector.two{left:72%;top:309px;width:1px;height:40px}.connector.two:after{transform:rotate(135deg);top:auto;bottom:0;right:-3px}.connector.two .pulse{display:none}.outputs{inset:39px 13px 0}.result{width:43%}.result:nth-child(1){left:3%;top:0}.result:nth-child(2){left:53%;top:12px}.result:nth-child(3){left:3%;top:162px}.result:nth-child(4){left:53%;top:174px}.controls{flex-wrap:wrap;justify-content:center}.status{min-width:105px}.note{font-size:9px}.step{font-size:10px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important}.source{opacity:1}}
+
+.source{animation-play-state:paused!important}
+.source-picker{position:absolute;top:350px;left:0;right:0;display:flex;justify-content:center;gap:9px}
+.source-picker button{width:49px;padding:3px;background:var(--white);border:1px solid var(--line);border-radius:7px;opacity:.5;transition:opacity .25s,transform .25s,border-color .25s}
+.source-picker button[aria-pressed=true]{opacity:1;border-color:var(--accent);transform:translateY(-3px)}
+.source-picker button:hover{opacity:1}.source-picker .art{display:block;border-radius:3px}
+#source-count{font:9px ui-monospace,monospace;color:var(--accent);letter-spacing:0}
+.mode-label{font-size:11px}.mode-label span{color:var(--muted);margin-left:14px;font-size:10px}
+@media(max-width:800px){.source-picker{top:305px}.source-picker button{width:39px}.source-note{top:278px}.mode-label span{display:block;margin:6px 0 0}.controls{flex-wrap:wrap}.transport{flex-wrap:wrap}.result{width:43%}}
+@media(max-width:540px){.source-picker{top:296px;gap:5px}.source-picker button{width:35px}.source-note{top:268px}.connector.two{top:335px;height:44px}.mode-label{text-align:center}.mode-label span{display:inline;margin-left:10px}.controls{gap:18px}.transport{justify-content:center}.outputs{inset:39px 13px 0}}
+</style>
+</head>
+<body>
+<header><a class="brand" href="/"><img src="/logo.svg" alt="">xxd prompt library</a><span class="draft">HERO STUDY / 02</span></header>
+<main>
+<section class="intro"><p class="eyebrow">ONE IMAGE. ENDLESS POSSIBILITIES.</p><h1>一张照片，<span>不止一种想象。</span></h1><p class="description">收集值得尝试的生图 Prompt。<br>从一张照片出发，看见不同创作者的想象力。</p><a class="cta" href="/#styles">探索提示词 <span>↗</span></a></section>
+<section class="stage" aria-label="三张原图轮换，分别经过纸上浮雕、刺绣意象、像素隐喻志和手工剪纸志四种风格">
+<div class="connector one" aria-hidden="true"><i class="pulse"></i></div><div class="connector two" aria-hidden="true"><i class="pulse"></i></div>
+<div class="col input-col"><div class="step"><b>01</b> 原图轮换 <span id="source-count">01 / 03</span></div><div class="source-ghost" aria-hidden="true"></div><div class="source"><div class="art original" role="img" aria-label="碧蓝海面上的橙色帆船原图（AI 演示素材）"></div><div class="source-caption"><b>夏日，海与帆船</b><span>original ↗</span></div></div><div class="source-note">相同的起点，<span>四种不同的可能</span></div><div class="source-picker" role="group" aria-label="选择原图"><button type="button" data-source="0" aria-label="选择帆船原图" aria-pressed="true"><span class="art original" style="--atlas:url('/hero-preview/boat-v2.png')"></span></button><button type="button" data-source="1" aria-label="选择花朵原图" aria-pressed="false"><span class="art original" style="--atlas:url('/hero-preview/flower-v2.png')"></span></button><button type="button" data-source="2" aria-label="选择建筑原图" aria-pressed="false"><span class="art original" style="--atlas:url('/hero-preview/chapel-v2.png')"></span></button></div></div>
+<div class="col prompt-col"><div class="step"><b>02</b> 遇见不同 Prompt</div><div class="deck">
+<article class="prompt"><div class="prompt-top"><span class="prompt-icon">▱</span>纸上浮雕<span class="prompt-id">#027</span></div><p>乳白纸面 · 浅浮雕 · 克制留白<br>让光影，重新勾勒记忆。<span class="cursor"></span></p></article>
+<article class="prompt"><div class="prompt-top"><span class="prompt-icon">✳</span>刺绣意象<span class="prompt-id">#039</span></div><p>真实针法 · 丝线光泽 · 东方留白<br>把灵感，藏进一针一线。<span class="cursor"></span></p></article>
+<article class="prompt"><div class="prompt-top"><span class="prompt-icon">▦</span>像素隐喻志<span class="prompt-id">#063</span></div><p>像素形体 · 色块构成 · 聪明隐喻<br>用最少的方块，装下想象。<span class="cursor"></span></p></article>
+<article class="prompt"><div class="prompt-top"><span class="prompt-icon">◩</span>手工剪纸志<span class="prompt-id">#018</span></div><p>层叠纸艺 · 精密裁切 · 柔和投影<br>让平面的记忆，长出层次。<span class="cursor"></span></p></article>
+</div><div class="engine-caption"><span>✦</span> CURATED PROMPTS, NEW PERSPECTIVES</div></div>
+<div class="col output-col"><div class="step"><b>03</b> 灵感，变成作品</div><div class="outputs">
+<a class="result" href="/prompts/xxd-panel-027" aria-label="查看纸上浮雕提示词"><div class="art relief" role="img" aria-label="帆船的纸上浮雕风格演示"></div><footer>纸上浮雕<span>027 ↗</span></footer></a>
+<a class="result" href="/prompts/xxd-panel-039" aria-label="查看刺绣意象提示词"><div class="art silk" role="img" aria-label="帆船的丝线刺绣风格演示"></div><footer>刺绣意象<span>039 ↗</span></footer></a>
+<a class="result" href="/prompts/xxd-panel-063" aria-label="查看像素隐喻志提示词"><div class="art pixel" role="img" aria-label="帆船的极简像素风格演示"></div><footer>像素隐喻志<span>063 ↗</span></footer></a>
+<a class="result" href="/prompts/xxd-panel-018" aria-label="查看手工剪纸志提示词"><div class="art cutpaper" role="img" aria-label="帆船的手工剪纸风格演示"></div><footer>手工剪纸志<span>018 ↗</span></footer></a>
+</div></div>
+</section>
+<div class="controls"><div class="mode-label">A / 灵感画廊 <span>3 张原图 × 4 种 Prompt</span></div><div class="transport"><span class="status" aria-live="off">原图飞入</span><div class="timeline" aria-hidden="true"><i></i></div><button type="button" id="pause" aria-pressed="false">暂停</button><button type="button" id="replay">重播 ↺</button><button type="button" id="all">查看全部</button></div></div>
+<p class="note">动效概念预览 · 图像为 AI 生成的风格演示，卡片为风格摘要，并非原始 Prompt 的逐字运行结果。<br>灵感取自库内 <a href="/prompts/xxd-panel-027">纸上浮雕</a> / <a href="/prompts/xxd-panel-039">刺绣意象</a> / <a href="/prompts/xxd-panel-063">像素隐喻志</a> / <a href="/prompts/xxd-panel-018">手工剪纸志</a>，原提示词作者：小小东（nevertoday）。</p>
+</main><div class="loading" role="status">正在准备演示图片…</div>
+<script>
+const stage = document.querySelector('.stage');
+const prompts = [...document.querySelectorAll('.prompt')];
+const results = [...document.querySelectorAll('.result')];
+const progress = document.querySelector('.timeline i');
+const status = document.querySelector('.status');
+const pause = document.querySelector('#pause');
+const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+const sources = [
+  { name: '夏日，海与帆船', subject: '帆船', file: 'boat-v2.png' },
+  { name: '花开，自有形状', subject: '花朵', file: 'flower-v2.png' },
+  { name: '午后，白色小教堂', subject: '建筑', file: 'chapel-v2.png' },
+];
+const names = ['纸上浮雕', '刺绣意象', '像素隐喻志', '手工剪纸志'];
+const duration = 14000;
+let elapsed = 0, last = null, playing = false, ready = false, lastState = '', sourceIndex = -1;
+const sourceAnimation = document.querySelector('.source').getAnimations()[0];
+function render() {
+  const index = Math.floor(elapsed / duration) % sources.length;
+  const t = elapsed % duration;
+  if (sourceAnimation) sourceAnimation.currentTime = t;
+  progress.style.width = `${t / duration * 100}%`;
+  const active = Math.min(3, Math.max(0, Math.floor((t - 1800) / 2400)));
+  const count = Math.min(4, Math.max(0, Math.floor((t - 3000) / 2400) + 1));
+  const state = `${index}:${active}:${count}:${t < 1800}`;
+  if (state === lastState) return;
+  lastState = state;
+  if (index !== sourceIndex) {
+    sourceIndex = index;
+    const source = sources[index];
+    stage.style.setProperty('--atlas', `url('/hero-preview/${source.file}')`);
+    document.querySelector('.source-caption b').textContent = source.name;
+    document.querySelector('.source .art').setAttribute('aria-label', `${source.subject}原图（AI 演示素材）`);
+    document.querySelector('#source-count').textContent = `0${index + 1} / 03`;
+    document.querySelectorAll('[data-source]').forEach((b, i) => b.setAttribute('aria-pressed', String(i === index)));
+    results.forEach((r, i) => r.querySelector('.art').setAttribute('aria-label', `${source.subject}的${names[i]}风格演示`));
+  }
+  prompts.forEach((p, i) => {
+    const d = (i - active + 4) % 4;
+    p.style.transform = `translateY(${[93, -23, -139, 209][d]}px)`;
+    p.style.visibility = d === 2 ? 'hidden' : 'visible';
+    p.style.transitionDuration = d === 2 ? '0s' : '';
+    p.classList.toggle('active', i === active);
+  });
+  results.forEach((r, i) => {
+    r.classList.toggle('shown', i < count);
+    r.classList.toggle('latest', i === count - 1);
+    r.inert = i >= count;
+  });
+  status.textContent = t < 1800 ? `${sources[index].subject}原图飞入` : count === 4 ? '4 种想象，已展开' : `正在演绎 · ${names[active]}`;
+}
+function tick(now) {
+  if (playing && !document.hidden) {
+    if (last !== null) elapsed += now - last;
+    render();
+  }
+  last = now;
+  requestAnimationFrame(tick);
+}
+function sync() {
+  document.body.classList.toggle('paused', !playing || document.hidden);
+  pause.textContent = playing ? '暂停' : '播放';
+  pause.setAttribute('aria-pressed', String(!playing));
+}
+function seek(time, play) {
+  elapsed = time; last = null; lastState = ''; playing = play;
+  render(); sync();
+}
+pause.addEventListener('click', () => {
+  if (!ready) return;
+  playing = !playing; last = null; sync();
+});
+document.querySelector('#replay').addEventListener('click', () => {
+  if (ready) seek(sourceIndex * duration + (reduced.matches ? 11500 : 0), !reduced.matches);
+});
+document.querySelector('#all').addEventListener('click', () => {
+  if (ready) seek(sourceIndex * duration + 11500, false);
+});
+document.querySelectorAll('[data-source]').forEach(button => button.addEventListener('click', () => {
+  if (ready) seek(Number(button.dataset.source) * duration + (playing && !reduced.matches ? 0 : 11500), playing && !reduced.matches);
+}));
+document.addEventListener('visibilitychange', () => { last = null; sync(); });
+function motionPreference() {
+  document.body.classList.toggle('still', reduced.matches);
+  if (reduced.matches) seek(Math.max(0, sourceIndex) * duration + 11500, false);
+}
+reduced.addEventListener('change', motionPreference);
+Promise.all(sources.map(source => new Promise((resolve, reject) => {
+  const image = new Image(); image.onload = resolve; image.onerror = reject;
+  image.src = `/hero-preview/${source.file}`;
+}))).then(() => {
+  ready = true;
+  document.querySelector('.loading').hidden = true;
+  playing = !reduced.matches;
+  motionPreference(); sync(); last = null;
+  requestAnimationFrame(tick);
+}).catch(() => {
+  document.querySelector('.loading').textContent = '演示图片暂未加载，请刷新重试。';
+});
+document.body.classList.add('paused'); render();
+</script>
+</body></html>

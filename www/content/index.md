@@ -1,11 +1,12 @@
 ---
 title: 主页
 navigation: false
-description: 整理自公开分享的优质生图提示词.
+description: 收集值得尝试的生图 Prompt。从一张照片出发，看见不同创作者的想象力。
 ---
 
 ::hero
 ---
+promptFlow: true
 actions:
   - name: 开始使用
     to: /usage
@@ -16,10 +17,10 @@ actions:
 ---
 
 #title
-xxd 生图提示词库
+一张照片，不止一种想象。
 
 #description
-整理自公开分享的优质生图提示词。 :br 逐字收录原始提示词，附风格速览与使用方法。
+收集值得尝试的生图 Prompt。 :br 从一张照片出发，看见不同创作者的想象力。
 ::
 
 ::style-board-embed

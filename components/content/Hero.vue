@@ -1,5 +1,8 @@
 <template>
-  <section class="mx-auto flex max-w-[980px] flex-col items-center gap-2 py-8 md:py-12 md:pb-8 lg:py-24 lg:pb-20">
+  <section
+    class="mx-auto flex flex-col items-center gap-2 py-8 md:py-12 md:pb-8 lg:py-24 lg:pb-20"
+    :class="promptFlow ? 'max-w-[1200px]' : 'max-w-[980px]'"
+  >
     <NuxtLinkLocale
       v-if="announcement"
       :to="announcement.to"
@@ -38,11 +41,13 @@
         </UiButton>
       </NuxtLinkLocale>
     </section>
+    <PromptFlow v-if="promptFlow" />
   </section>
 </template>
 
 <script setup lang="ts">
 defineProps<{
+  promptFlow?: boolean;
   announcement?: {
     to?: string;
     target?: Target;
