@@ -1,0 +1,10 @@
+shellEmulator: true
+
+packages:
+  - www/
+
+allowBuilds:
+  '@parcel/watcher': false
+  esbuild: false
+  sharp: true
+  vue-demi: false

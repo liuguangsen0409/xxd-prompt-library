@@ -1,0 +1,31 @@
+# Nuxt dev/build outputs
+.output
+.data
+.nuxt
+.nitro
+.cache
+dist
+
+# Node dependencies
+node_modules
+
+# Logs
+logs
+*.log
+
+# Misc
+.DS_Store
+.fleet
+.idea
+
+# Local env files
+.env
+.env.*
+!.env.example
+
+# imgBB upload manifest (contains delete URLs, never commit)
+imgbb-manifest.json
+
+# Claude Code: shared settings (.claude/settings.json) is tracked;
+# personal settings and accumulated permission records stay local
+.claude/settings.local.json

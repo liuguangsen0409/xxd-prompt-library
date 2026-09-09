@@ -1,0 +1,17 @@
+{
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Edit",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 \"$CLAUDE_PROJECT_DIR/.claude/hooks/verify-page.py\" 2>/dev/null || true",
+            "timeout": 10,
+            "statusMessage": "检查 dev server 页面状态"
+          }
+        ]
+      }
+    ]
+  }
+}
