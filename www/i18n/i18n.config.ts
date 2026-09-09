@@ -28,7 +28,7 @@ export default defineI18nConfig(() => ({
       'Create Issues': 'Create Issues',
 
       // Footer
-      'FOOTER_CREDIT': 'Made with ❤️ by [**Tony Zhang**](https://github.com/ZTL-UwU/)',
+      'FOOTER_CREDIT': 'Designed By Uncle Jiwa',
       'Sponsor Me': 'Sponsor Me',
     },
     fr: {
@@ -57,7 +57,7 @@ export default defineI18nConfig(() => ({
       'Create Issues': 'Créer une Issue',
 
       // Footer
-      'FOOTER_CREDIT': 'Fait avec ❤️ par [**Tony Zhang**](https://github.com/ZTL-UwU/)',
+      'FOOTER_CREDIT': 'Designed By Uncle Jiwa',
       'Sponsor Me': 'Me Sponsoriser',
     },
     km: {
@@ -86,7 +86,7 @@ export default defineI18nConfig(() => ({
       'Create Issues': 'បង្កើតចំណោទបញ្ហា',
 
       // Footer
-      'FOOTER_CREDIT': 'បានបង្កើតជាមួយនឹង ❤️ ដោយ [**Tony Zhang**](https://github.com/ZTL-UwU/)',
+      'FOOTER_CREDIT': 'Designed By Uncle Jiwa',
       'Sponsor Me': 'គាំទ្រខ្ញុំ',
     },
     it: {
@@ -115,7 +115,7 @@ export default defineI18nConfig(() => ({
       'Create Issues': 'Crea Segnalazioni',
 
       // Footer
-      'FOOTER_CREDIT': 'Realizzato con ❤️ da [**Tony Zhang**](https://github.com/ZTL-UwU/)',
+      'FOOTER_CREDIT': 'Designed By Uncle Jiwa',
       'Sponsor Me': 'Sponsorizzami',
     },
     zhcn: {
@@ -144,7 +144,7 @@ export default defineI18nConfig(() => ({
       'Create Issues': '创建一个 Issue',
 
       // Footer
-      'FOOTER_CREDIT': '由 [**Tony Zhang**](https://github.com/ZTL-UwU/) ❤️ 制作',
+      'FOOTER_CREDIT': 'Designed By Uncle Jiwa',
       'Sponsor Me': '赞助我',
     },
   },
