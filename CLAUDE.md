@@ -92,7 +92,7 @@ www/
 - **数据**：`www/server/api/styles.get.ts`（`/api/styles`）——从 `/prompts` 内容提取每篇的 sample-grid 前三张图，5 分钟内存缓存；支持 `page`/`limit` 分页（默认页大小 12）与 `all=1` 全量；分页大小上限 60
 - **图片**：`www/server/api/image-proxy.get.ts`（`/api/image-proxy`）——imgBB 原图经 sharp 压缩转 webp/jpeg，磁盘缓存在 `/tmp/xxd-style-image-cache`；sharp 是 `www/package.json` 的显式依赖，不要移除
 - **画板内交互**：搜索框是本地过滤（输入即筛，搜索时在全量池里匹配标题/描述/编号）；「换个顺序」会拉全量（`all=1`，结果缓存于组件内）整体洗牌后客户端分窗展示
-- **预渲染**：`www/nuxt.config.ts` 的 nitro prerender 包含 `/embed/styles` 与 `/api/styles`，新增相关路由时记得同步
+- **预渲染**：`www/nuxt.config.ts` 预渲染 `/embed/styles`；`/api/styles` 必须通过 routeRules 禁止预渲染，否则静态响应会忽略分页与全量查询参数。该接口依赖服务端运行，部署使用 `pnpm build`。
 
 ## 新增 Prompt 文章流程（SOP，已跑通）
 

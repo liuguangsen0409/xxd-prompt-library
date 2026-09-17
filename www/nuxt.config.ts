@@ -4,8 +4,12 @@ export default defineNuxtConfig({
   extends: ['..'],
   nitro: {
     prerender: {
-      routes: ['/embed/styles', '/api/styles'],
+      routes: ['/embed/styles'],
     },
+  },
+  routeRules: {
+    // Pagination and full-list requests must not share a static response.
+    '/api/styles': { prerender: false },
   },
   i18n: {
     defaultLocale: 'zhcn',
