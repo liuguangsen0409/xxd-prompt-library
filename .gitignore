@@ -25,6 +25,7 @@ logs
 
 # imgBB upload manifest (contains delete URLs, never commit)
 imgbb-manifest.json
+imgbb-manifest.json.tmp
 
 # Claude Code: shared settings (.claude/settings.json) is tracked;
 # personal settings and accumulated permission records stay local

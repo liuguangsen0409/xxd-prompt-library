@@ -37,13 +37,19 @@
     "types"
   ],
   "scripts": {
-    "build": "nuxt prepare && nuxt build www",
-    "dev": "nuxt prepare && nuxt dev www",
-    "generate": "nuxt prepare && nuxt generate www",
+    "build": "pnpm categories && nuxt prepare && nuxt build www",
+    "dev": "pnpm categories && nuxt prepare && nuxt dev www",
+    "generate": "pnpm categories && nuxt prepare && nuxt generate www",
     "preview": "nuxt prepare && nuxt preview www",
     "typecheck": "nuxt prepare && nuxt typecheck",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "thumbnails": "node www/scripts/prepare-thumbnails.mjs",
+    "thumbnails:check": "node www/scripts/prepare-thumbnails.mjs --check",
+    "test:thumbnails": "node --test www/scripts/thumbnails.test.mjs",
+    "categories": "node --experimental-strip-types www/scripts/classify-styles.mjs",
+    "categories:check": "node --experimental-strip-types www/scripts/classify-styles.mjs --check",
+    "test:categories": "node --experimental-strip-types --test www/scripts/categories.test.mjs"
   },
   "dependencies": {
     "@iconify-json/lucide": "^1.2.123",

@@ -49,28 +49,19 @@
       >
         <div class="bg-muted grid aspect-[2/1] grid-cols-3 overflow-hidden">
           <div v-for="(image, imageIndex) in style.images" :key="image.src" class="relative h-full min-w-0 overflow-hidden">
-            <picture>
-              <source
-                :srcset="`${proxyImageUrl(image.src, 480, 'webp')} 480w, ${proxyImageUrl(image.src, 720, 'webp')} 720w, ${proxyImageUrl(image.src, 960, 'webp')} 960w`"
-                type="image/webp"
-                sizes="(max-width: 640px) 33vw, 25vw"
-              >
-              <img
-                :src="proxyImageUrl(image.src, 640, 'jpeg')"
-                :srcset="`${proxyImageUrl(image.src, 480, 'jpeg')} 480w, ${proxyImageUrl(image.src, 720, 'jpeg')} 720w, ${proxyImageUrl(image.src, 960, 'jpeg')} 960w`"
-                sizes="(max-width: 640px) 33vw, 25vw"
-                :alt="`${style.title}，参考样图 ${imageIndex + 1}`"
-                loading="lazy"
-                decoding="async"
-                :fetchpriority="index === 0 && imageIndex === 0 ? 'high' : 'auto'"
-                :width="index === 0 && imageIndex === 0 ? 800 : 480"
-                :height="index === 0 && imageIndex === 0 ? 450 : 270"
-                class="h-full w-full object-cover transition-transform duration-500 motion-reduce:transition-none"
-                :style="{ objectPosition: image.position ?? 'center' }"
-                @error="imageError($event, style.fallbackImage)"
-                @load="checkImage($event, style.fallbackImage)"
-              >
-            </picture>
+            <img
+              :src="image.src"
+              :alt="`${style.title}，参考样图 ${imageIndex + 1}`"
+              loading="lazy"
+              decoding="async"
+              :fetchpriority="index === 0 && imageIndex === 0 ? 'high' : 'auto'"
+              :width="image.width ?? 480"
+              :height="image.height ?? 640"
+              class="h-full w-full object-cover transition-transform duration-500 motion-reduce:transition-none"
+              :style="{ objectPosition: image.position ?? 'center' }"
+              @error="imageError($event, style.fallbackImage)"
+              @load="checkImage($event, style.fallbackImage)"
+            >
           </div>
         </div>
         <div class="pointer-events-none absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/85 via-black/50 to-transparent px-4 pb-4 pt-14 text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100 max-sm:opacity-100 motion-reduce:transition-none [@media(hover:none)]:opacity-100">
@@ -212,9 +203,9 @@ async function shuffle() {
 
 function imageError(event: Event, fallback?: string) {
   const image = event.target as HTMLImageElement;
-  const fallbackUrl = fallback ? proxyImageUrl(fallback, 640, 'jpeg') : undefined;
-  if (fallbackUrl && image.src !== fallbackUrl) {
-    image.src = fallbackUrl;
+  if (fallback && image.dataset.fallbackFor !== image.getAttribute('src')) {
+    image.dataset.fallbackFor = fallback;
+    image.src = fallback;
     return;
   }
   image.classList.add('object-contain', 'p-3', 'text-xs');
@@ -224,12 +215,6 @@ function checkImage(event: Event, fallback?: string) {
   const image = event.target as HTMLImageElement;
   if (image.naturalWidth === 180 && image.naturalHeight === 180)
     imageError(event, fallback);
-}
-
-function proxyImageUrl(src: string, width = 640, format: 'webp' | 'jpeg' = 'webp') {
-  if (!src || src.startsWith('/'))
-    return src;
-  return `/api/image-proxy?src=${encodeURIComponent(src)}&w=${Math.max(180, Math.min(960, width))}&q=70&format=${format}`;
 }
 
 function onMessage(event: MessageEvent) {

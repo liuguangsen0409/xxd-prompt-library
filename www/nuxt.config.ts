@@ -1,7 +1,11 @@
+import { fileURLToPath } from 'node:url';
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   devtools: { enabled: true },
   extends: ['..'],
+  alias: {
+    '@': fileURLToPath(new URL('..', import.meta.url)),
+  },
   nitro: {
     prerender: {
       routes: ['/embed/styles'],
@@ -22,6 +26,9 @@ export default defineNuxtConfig({
     ],
   },
   content: {
+    navigation: {
+      fields: ['styleCategory'],
+    },
     highlight: {
       langs: ['mdc', 'mermaid', 'tsx'],
     },

@@ -36,6 +36,8 @@
 </template>
 
 <script setup lang="ts">
+import { groupStyleNavigation } from '@/lib/style-categories';
+
 defineProps<{ isMobile: boolean }>();
 
 const { navDirFromPath } = useContentHelpers();
@@ -49,10 +51,10 @@ const tree = computed(() => {
     const leveledPath = path.splice(0, locale.value === defaultLocale ? 2 : 3).join('/');
 
     const dir = navDirFromPath(leveledPath, navigation.value);
-    return dir ?? [];
+    return groupStyleNavigation(dir ?? []);
   }
 
-  return navigation.value;
+  return groupStyleNavigation(navigation.value);
 });
 
 const path = computed(() => useRoute().path);

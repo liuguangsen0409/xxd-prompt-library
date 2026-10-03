@@ -24,4 +24,9 @@ export default antfu({
   rules: {
     'vue/block-order': 'off',
   },
+}, {
+  files: ['www/scripts/*.test.mjs'],
+  rules: {
+    'test/no-import-node-test': 'off',
+  },
 });

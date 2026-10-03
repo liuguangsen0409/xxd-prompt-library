@@ -2,6 +2,17 @@ import type { H3Event } from 'h3';
 import type { StylePreview, StylePreviewPage } from '../../../types/style-board';
 import { getQuery } from 'h3';
 import { serverQueryContent } from '#content/server';
+import thumbnailData from '../../data/style-thumbnails.json';
+
+const thumbnails = thumbnailData as Record<string, { src: string; width: number; height: number }>;
+
+function previewImage(src: string) {
+  const thumbnail = thumbnails[src];
+  if (thumbnail)
+    return { src: thumbnail.src, width: thumbnail.width, height: thumbnail.height };
+  // Keep older articles and local drafts usable until their thumbnails are uploaded.
+  return { src: src.startsWith('/') ? src : `/api/image-proxy?src=${encodeURIComponent(src)}&w=480&q=70&format=webp` };
+}
 
 interface ContentNode {
   tag?: string;
@@ -72,8 +83,8 @@ async function loadStyles(event: H3Event) {
       title: article.title ?? '',
       description: gallery?.description ?? (article.description ?? '').replace(/的生图提示词[。.]?$/, '。'),
       number: Number(article._path.match(/\d+$/)?.[0]),
-      images,
-      fallbackImage: samples[3],
+      images: images.map(image => ({ ...image, ...previewImage(image.src) })),
+      fallbackImage: samples[3] ? previewImage(samples[3]).src : undefined,
     }];
   }).sort((a, b) => a.number - b.number);
 

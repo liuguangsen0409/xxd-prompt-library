@@ -1,6 +1,8 @@
 export interface StylePreviewImage {
   src: string;
   position?: string;
+  width?: number;
+  height?: number;
 }
 
 export interface StylePreview {
