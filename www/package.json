@@ -12,7 +12,10 @@
   "dependencies": {
     "@iconify-json/lucide-lab": "^1.2.3",
     "@iconify-json/simple-icons": "^1.2.93",
+    "@upstash/redis": "^1.39.0",
+    "fast-xml-parser": "^5.11.1",
     "nuxt": "^4.5.2",
+    "nuxt-auth-utils": "^0.5.30",
     "sharp": "^0.34.5",
     "vue": "^3.5.41",
     "vue-router": "^5.2.0",

@@ -30,6 +30,7 @@
               <SmartIcon v-if="link?.icon" :name="link.icon" :size="18" />
             </UiButton>
           </NuxtLinkLocale>
+          <LayoutWechatLogin />
         </div>
       </div>
     </div>

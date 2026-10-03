@@ -12,6 +12,11 @@ on:
 jobs:
   lint:
     runs-on: ubuntu-latest
+    services:
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
     steps:
       - uses: actions/checkout@v4
 
@@ -42,6 +47,11 @@ jobs:
 
       - name: Test thumbnail collection
         run: pnpm run test:thumbnails
+
+      - name: Test WeChat login
+        run: pnpm run test:wechat
+        env:
+          REDIS_TEST_URL: redis://127.0.0.1:6379
 
   typecheck:
     runs-on: ubuntu-latest
