@@ -43,6 +43,8 @@ Vercel 冷启动和微信到部署区域的网络延迟需通过真实消息测�
 
 ## 本地验证
 
+- 消息链路诊断：部署后向公众号发送「测试」，应固定回复「消息接收正常」。此分支保留签名校验和 AES 加解密，但不访问 Redis、不生成验证码；仍需配置现有微信环境变量。Vercel 日志会出现 `[wechat] diagnostic reply prepared`，仅说明服务端已准备回复，实际送达需以微信聊天窗口为准。
+
 - `pnpm test:wechat`：签名、加解密和输入检查；没有 `REDIS_TEST_URL` 时，Redis 集成测试会明确标记为跳过。
 - `REDIS_TEST_URL=redis://127.0.0.1:6379 pnpm test:wechat`：连接专用、可丢弃的本地 Redis，额外验证并发发码、一次性消费、消息去重、过期和限流。不要连接生产数据库。CI 使用 Redis 7 服务运行完整测试。
 - `pnpm typecheck`、`pnpm lint`、`pnpm build`：实际 `www` 站点的类型、代码规范和生产构建检查。
